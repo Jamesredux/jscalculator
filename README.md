@@ -32,3 +32,13 @@ EXTRA CREDIT: Make it look nice! This can be a good portfolio project... but not
 EXTRA CREDIT: Add a "backspace" button, so the user can undo if they click the wrong number.
 EXTRA CREDIT: Add keyboard support!
 Student Solutions
+
+
+
+Done basic calculator
+can string operators eg 2 + 2 * 3 / 6
+can toggle negative and positive numbers
+all clear button
+can use keyboard keys.
+
+to do backspace function and css styling layout

@@ -1,18 +1,75 @@
-#shell {
-	display: grid;
-	grid-template-columns: 50px 50px 50px 50px;
-	grid-template-rows: 40px 40px 40px 40px 40px 40px;
+body {
+	background-color: #F6E8F5;
 }
 
-#display-screen {
-	grid-column-start: 1;
-	grid-column-end: 4;
+ 
+
+button {
+	background-color: #2e3d49;
+	color: #fff;
+	font-size: 1.5em;
+	border-radius: 12%;
 }
+
+.header {
+	background-color: #F8F3CB;
+	height: 150px;
+	margin: 0;
+	text-align: center;
+	color: #1E1D19;
+	font-size: 1.5em;
+	padding-top: 20px;
+}
+
+#calculator {
+	border: 4px groove #37393D;
+	border-radius: 2%;
+	width: 350px;
+	height: 550px;
+	margin: 0 auto;
+	margin-top: 20px;
+	background-color: 	#D0D9E2;
+}
+
+
+
+#button-group {
+	margin: 0 auto;
+	display: grid;
+	width: 250px;
+	height: 400px;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 20% 20% 20% 20% 20%;
+	grid-row-gap: 3px;
+	grid-column-gap: 3px;
+}
+
+
 
 .equals-button {
-	grid-column: 1/3;
+	grid-column: span 2;
 }
 
 .zero-button {
-	grid-column: 1/3;
+
+}
+
+.screen {
+	height: 60px;
+	border: black 2px solid;
+	margin: 30px 15px 15px 15px;
+	text-align: left;
+	font-size: 1.5em;
+	padding-left: 3px;
+	padding-top: 3px;
+	background-color: #BACBB6;
+
+}
+
+.operator-button {
+	background-color: #9F9E9B;
+}
+
+.clear-button {
+	background-color: #DE9C19;
 }
