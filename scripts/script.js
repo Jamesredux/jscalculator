@@ -25,6 +25,9 @@ function init() {
  
 	keyDownSetUp();
 
+	const keys = document.querySelectorAll('.key');
+	console.log(keys);
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
 	for (i  =  0; i < numButtons.length; i++) {
@@ -221,31 +224,40 @@ function doCalculation(a, operator, b ) {
 		document.addEventListener('keydown', e => {
   switch (e.key) {
     case '+':
-      //document.querySelector(`.badd`).classList.add('active')
+      let plusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+    	plusKeyPressed.classList.add('key-press');
       addOperator(e.key);
       break;
     case '-':
-      //document.querySelector(`.bsubtract`).classList.add('active')
+    	let minusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+    	minusKeyPressed.classList.add('key-press');
       addOperator(e.key);
       break;
     case '*':
-     // document.querySelector(`.bmultiply`).classList.add('active')
+    	let timesKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+    	timesKeyPressed.classList.add('key-press');
       addOperator(e.key);
       break;
     case '/':
-      //document.querySelector(`.bdivide`).classList.add('active')
+      let divideKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+    	divideKeyPressed.classList.add('key-press');
       addOperator(e.key);
       break;
     case '.':
-     // document.querySelector(`.bdecimal`).classList.add('active')
+      let decimalKeyPressed = document.querySelector(`.decimal-button[data-key="${e.key}"]`); 
+    	decimalKeyPressed.classList.add('key-press');
       addDecimal(e.key);
       break;
     case 'Enter':
     case '=':
-      //document.querySelector(`.bequals`).classList.add('active')
+      let enterKeyPressed = document.querySelector(`.equals-button[data-key="="]`); 
+    	enterKeyPressed.classList.add('key-press');
       runCalculation();
       break;
     case 'Delete':
+    	console.log(e.key)
+    	let deleteKeyPressed = document.querySelector(`.clear-button[data-key="AC"]`); 
+    	deleteKeyPressed.classList.add('key-press');
     	allClear();
     	break;	
     	  
@@ -267,8 +279,17 @@ function doCalculation(a, operator, b ) {
     case '7':
     case '8':
     case '9':
-     // document.querySelector(`.b${e.key}`).classList.add('active')
+    	let numKeyPressed = document.querySelector(`.number-button[data-key="${e.key}"]`); 
+    	numKeyPressed.classList.add('key-press');
       addNumber(e.key);
-  }
-});
+  		}
+		});
+
+
+
+	};
+
+	function removeTransition(e) {
+		console.log("called");
+		this.classList.remove('key-press');
 	}
