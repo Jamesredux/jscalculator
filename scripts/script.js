@@ -10,10 +10,6 @@ function lastObject(array) {
 	return array[array.length-1];
 }
 
-
-
-
-
 function init() {
 
 	const numButtons = document.getElementsByClassName("number-button");
@@ -26,23 +22,18 @@ function init() {
 	keyDownSetUp();
 
 	const keys = document.querySelectorAll('.key');
-	console.log(keys);
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
 	for (i  =  0; i < numButtons.length; i++) {
 		numButtons[i].addEventListener('click', (e) => {
 				addNumber(e.target.textContent);
-		});
-		
+		});		
 	};
 	
-
-
 	for (i  =  0; i < operatorButtons.length; i++) {
 		operatorButtons[i].addEventListener('click', (e) => {
 			addOperator(e.target.innerText);
-		 //function to add operator if ok to display and equation.
 		});
 	};
 
@@ -73,10 +64,6 @@ let multiply = (a, b) => Math.floor((a*b)*100) / 100;
 let minus = (a, b) => Math.floor((a-b)*100) / 100;
 
 let divide = (a, b) => Math.floor((a/b)*100) / 100;
-
-const testEq = [12, "+", 12, "*", 3, '/', 2, "-", 4];
-
-const testEq2 = [12, "-", 12, "*", 3, '+', 12, "/", 4];
 
 
 function calculateEquation(array) {
@@ -109,8 +96,6 @@ function evaluateEquation(item, index, array) {
 			array[index+1] = sumProduct; // replace one of array object with result of sum
 			array[index] = null; // remove the other 2 objects - turn them to null they will be filtered by calculateEquation function
 			array[index-1] = null;
-
-
 		};
 	}
 };
@@ -158,7 +143,6 @@ function doCalculation(a, operator, b ) {
 	};
 
 	function addDecimal(point) {
-		//doesn't work for 0
 		if (firstObjectIsResult == true) {
 			equation[equation.length-1] = '0.';
 		} 
@@ -206,90 +190,70 @@ function doCalculation(a, operator, b ) {
 			console.log(x);
 			x.indexOf("-") == 0 ? x = x.replace("-", "") : x = "-" + x;
 			equation[equation.length-1] =  x;
-			//equation[equation.length-1] *= -1;
 			updateDisplay(equation);
 		};
 	};
-	//to do what to do if operator then equals pressed
-	//what to do with result
-	//ac
-
-	//function numberPressed(code) {
-	//	switch (code) {
-	//		case: 
-	//	}
-	//}
 
 	function keyDownSetUp() {
 		document.addEventListener('keydown', e => {
-  switch (e.key) {
-    case '+':
-      let plusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
-    	plusKeyPressed.classList.add('key-press');
-      addOperator(e.key);
-      break;
-    case '-':
-    	let minusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
-    	minusKeyPressed.classList.add('key-press');
-      addOperator(e.key);
-      break;
-    case '*':
-    	let timesKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
-    	timesKeyPressed.classList.add('key-press');
-      addOperator(e.key);
-      break;
-    case '/':
-      let divideKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
-    	divideKeyPressed.classList.add('key-press');
-      addOperator(e.key);
-      break;
-    case '.':
-      let decimalKeyPressed = document.querySelector(`.decimal-button[data-key="${e.key}"]`); 
-    	decimalKeyPressed.classList.add('key-press');
-      addDecimal(e.key);
-      break;
-    case 'Enter':
-    case '=':
-      let enterKeyPressed = document.querySelector(`.equals-button[data-key="="]`); 
-    	enterKeyPressed.classList.add('key-press');
-      runCalculation();
-      break;
-    case 'Delete':
-    	console.log(e.key)
-    	let deleteKeyPressed = document.querySelector(`.clear-button[data-key="AC"]`); 
-    	deleteKeyPressed.classList.add('key-press');
-    	allClear();
-    	break;	
-    	  
-   // case 'Backspace':
-     //// document.querySelector(`.bAC`).classList.add('active')
-     // backspace();
-      //break;
-   // case 'Delete':
-     // document.querySelector(`.bC`).classList.add('active')
-    //  clear();
-     // break;
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-    	let numKeyPressed = document.querySelector(`.number-button[data-key="${e.key}"]`); 
-    	numKeyPressed.classList.add('key-press');
-      addNumber(e.key);
-  		}
-		});
-
-
-
+		  switch (e.key) {
+		    case '+':
+		      let plusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+		    	plusKeyPressed.classList.add('key-press');
+		      addOperator(e.key);
+		      break;
+		    case '-':
+		    	let minusKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+		    	minusKeyPressed.classList.add('key-press');
+		      addOperator(e.key);
+		      break;
+		    case '*':
+		    	let timesKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+		    	timesKeyPressed.classList.add('key-press');
+		      addOperator(e.key);
+		      break;
+		    case '/':
+		      let divideKeyPressed = document.querySelector(`.operator-button[data-key="${e.key}"]`); 
+		    	divideKeyPressed.classList.add('key-press');
+		      addOperator(e.key);
+		      break;
+		    case '.':
+		      let decimalKeyPressed = document.querySelector(`.decimal-button[data-key="${e.key}"]`); 
+		    	decimalKeyPressed.classList.add('key-press');
+		      addDecimal(e.key);
+		      break;
+		    case 'Enter':
+		    case '=':
+		      let enterKeyPressed = document.querySelector(`.equals-button[data-key="="]`); 
+		    	enterKeyPressed.classList.add('key-press');
+		      runCalculation();
+		      break;
+		    case 'Delete':
+		    	console.log(e.key)
+		    	let deleteKeyPressed = document.querySelector(`.clear-button[data-key="AC"]`); 
+		    	deleteKeyPressed.classList.add('key-press');
+		    	allClear();
+		    	break;	
+ 
+		    case '0':
+		    case '1':
+		    case '2':
+		    case '3':
+		    case '4':
+		    case '5':
+		    case '6':
+		    case '7':
+		    case '8':
+		    case '9':
+		    	let numKeyPressed = document.querySelector(`.number-button[data-key="${e.key}"]`); 
+		    	numKeyPressed.classList.add('key-press');
+		      addNumber(e.key);
+		  		}
+				});
 	};
+
 
 	function removeTransition(e) {
 		console.log("called");
 		this.classList.remove('key-press');
-	}
+	};
