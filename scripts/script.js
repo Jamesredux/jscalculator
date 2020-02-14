@@ -187,7 +187,6 @@ function doCalculation(a, operator, b ) {
 	function toggleNegative() {
 		x = lastObject(equation)
 		if (!isNaN(x)) {
-			console.log(x);
 			x.indexOf("-") == 0 ? x = x.replace("-", "") : x = "-" + x;
 			equation[equation.length-1] =  x;
 			updateDisplay(equation);
@@ -229,7 +228,6 @@ function doCalculation(a, operator, b ) {
 		      runCalculation();
 		      break;
 		    case 'Delete':
-		    	console.log(e.key)
 		    	let deleteKeyPressed = document.querySelector(`.clear-button[data-key="AC"]`); 
 		    	deleteKeyPressed.classList.add('key-press');
 		    	allClear();
@@ -254,6 +252,5 @@ function doCalculation(a, operator, b ) {
 
 
 	function removeTransition(e) {
-		console.log("called");
 		this.classList.remove('key-press');
 	};
